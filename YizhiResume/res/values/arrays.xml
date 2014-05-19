@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "mTitles">
+        <item>个人信息</item>
+        <item>求职意向</item>
+        <item>教育经历</item>
+        <item>编程技能</item>
+        <item>个人项目</item>
+        <item>读过的书</item>
+    </string-array>
+</resources>

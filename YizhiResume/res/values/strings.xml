@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">简历</string>
+    <string name="myName">姓名：王轶</string>
+    <string name="myAge">年龄：21</string>
+    <string name="mySchool">学校：武汉大学</string>
+    <string name="myHabit">爱好：乒乓球，阅读</string>
+    <string name="desc">desc</string>
+    <string name="myHint">查看详细请点击</string>
+	<string name="drawer_open">open</string>
+	<string name="drawer_close">close</string>
+	<string name="school01">四川省绵竹中学</string>
+	<string name="school02">武汉大学</string>
+	<string name="school01_during">2008.08&#8211;2011.06</string>
+	<string name="school02_institute">数学与统计学院</string>
+	<string name="school02_department">信息与计算科学</string>
+	<string name="school02_during">2011.09&#8211;2015.06</string>
+	<string name="developer">android客户端开发实习生</string>
+	<string name="faceImage_desc">我的照片</string>
+	<string name="note">摄于2011年（大一）</string>
+	
+</resources>

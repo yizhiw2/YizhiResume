@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   	style="@style/FragmentPading"
+    
+  	 >
+     
+    <TextView 
+        android:id="@+id/fragment02_text01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:layout_alignParentLeft="true"
+        android:text="@string/school01"
+        android:textSize="30sp"
+        android:textColor="#8552a1"
+        android:layout_above="@+id/fragment02_text02"
+        />
+    
+    
+    <TextView 
+        android:id="@+id/fragment02_text02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:gravity="center"
+        android:text="@string/school01_during"
+        style="@style/ContantTextStyle"
+       	android:layout_above="@+id/fragment02_text03"
+        />
+    
+     
+    <TextView 
+        android:id="@+id/fragment02_text03"
+        android:paddingTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/school02"
+        android:layout_alignParentLeft="true"
+      	android:textSize="30sp"
+        android:textColor="#8552a1"
+        android:layout_centerVertical="true"
+        />
+    <TextView 
+        android:id="@+id/fragment02_text04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/school02_during"
+        android:gravity="center"
+        style="@style/ContantTextStyle"
+        android:layout_below="@+id/fragment02_text03"
+        />
+    <TextView 
+        android:id="@+id/fragment02_text05"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/school02_institute"
+        android:gravity="center"
+        style="@style/ContantTextStyle"
+        android:layout_below="@+id/fragment02_text04"
+        />
+   <TextView 
+        android:id="@+id/fragment02_text06"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/school02_department"
+        android:gravity="center"
+        style="@style/ContantTextStyle"
+        android:layout_below="@+id/fragment02_text05"
+        />
+	
+</RelativeLayout>

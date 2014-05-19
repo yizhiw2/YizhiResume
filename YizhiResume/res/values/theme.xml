@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light">  
+        <item name="android:actionBarStyle">@style/MyActionBar</item>  
+        <item name="android:actionMenuTextColor">#FF4500</item>
+        
+    </style>  
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar">  
+        <item name="android:background">#228fbd</item>  
+        <item name="android:titleTextStyle">@style/MyTitleTextStyle</item> 
+    </style> 
+    <style name="MyTitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">  
+       <item name="android:textSize">18sp</item>  
+       <item name="android:textColor">#fffffb</item> //修改标题字体大小及颜色  
+   </style>  
+</resources>
