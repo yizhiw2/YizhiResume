@@ -3,5 +3,5 @@
     <color name = "main_write">#fffffb</color>
     <color name = "background_03">#aaaaaa</color>
     <color name = "color_text_01">#aa0000</color>
-    
+    <color name = "color_text_black">#130c0e</color>
 </resources>

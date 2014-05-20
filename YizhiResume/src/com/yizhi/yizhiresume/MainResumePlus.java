@@ -5,23 +5,36 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.yizhi.yizhiresume.MainResume.DrawerItemClickListener;
 import com.yizhi.yizhiresume.fragments.Fragment00;
 import com.yizhi.yizhiresume.fragments.Fragment01;
 import com.yizhi.yizhiresume.fragments.Fragment02;
 import com.yizhi.yizhiresume.fragments.Fragment03;
 import com.yizhi.yizhiresume.fragments.Fragment04;
 import com.yizhi.yizhiresume.fragments.Fragment05;
+import com.yizhi.yizhiresume.fragments.Fragment06;
 
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ListFragment;
+import android.content.ContentProviderOperation;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.provider.ContactsContract.CommonDataKinds.StructuredName;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.RawContacts;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,11 +42,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
+@SuppressLint("ShowToast")
 public class MainResumePlus extends Activity
-	implements OnItemClickListener
-	{
-	
+	implements OnItemClickListener,Fragment06.Callbacks
+{
+	boolean addSuccess = false;
 	private CharSequence mTitle;
 	private CharSequence mDrawerTitle;
 	private DrawerLayout mDrawerLayout;
@@ -53,7 +68,9 @@ public class MainResumePlus extends Activity
 				R.drawable.office_2,
 				R.drawable.android_2,
 				R.drawable.lab_2,
-				R.drawable.book_2
+				R.drawable.book_2,
+				R.drawable.mobile_2,
+				
 			};
 	
 	
@@ -236,17 +253,25 @@ public class MainResumePlus extends Activity
 				fragment = new Fragment05();
 				args.putInt(Fragment05.NUMBER, position);
 				break;
+			case 6:
+				fragment = new Fragment06();
+				args.putInt(Fragment06.NUMBER, position);
+				break;
+				
 			default:
 				break;
 			}
-		    
+
 		    fragment.setArguments(args);
 
-		    // Insert the fragment by replacing any existing fragment
-		    android.app.FragmentManager fragmentManager = getFragmentManager();
-		    fragmentManager.beginTransaction()
-		                   .replace(R.id.content_frame, fragment)
-		                   .commit();
+			    // Insert the fragment by replacing any existing fragment
+			android.app.FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+			           	.replace(R.id.content_frame, fragment)
+//			            .addToBackStack(null) //加入后退栈中
+			            .commit();
+		
+		    
 
 		    // Highlight the selected item, update the title, and close the drawer
 		    mDrawerList.setItemChecked(position, true);
@@ -259,4 +284,142 @@ public class MainResumePlus extends Activity
 		mTitle = title;
 		getActionBar().setTitle(mTitle);
 	}
+
+
+
+	@Override
+	public void onButtonClick(View v) {
+		// TODO Auto-generated method stub
+		String phone_number = getResources()
+				.getString(R.string.phone_number);
+		String email_address = getResources()
+				.getString(R.string.email_address);
+		String email_subject = getResources()
+				.getString(R.string.email_subject);
+		String name = getResources()
+				.getString(R.string.name);
+		String qq_number = getResources()
+				.getString(R.string.qq_number);
+		
+		Intent intent = null;
+		switch (v.getId()) {
+		case R.id.call:
+			 intent = new Intent(Intent.ACTION_CALL,
+					 Uri.parse("tel:"+phone_number));  
+             startActivity(intent);  
+			break;
+		case R.id.message:
+			intent = new Intent(Intent.ACTION_VIEW,
+					Uri.parse("smsto:"+phone_number));
+            startActivity(intent);  
+			break;
+		case R.id.email:
+			intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(   
+					"mailto", email_address, null));   
+            intent.putExtra(Intent.EXTRA_SUBJECT,email_subject);  
+			startActivity(intent);
+			break;
+		case R.id.saveto:
+			addContact(MainResumePlus.this,
+					name,
+					qq_number,
+					phone_number,
+					email_address,
+					"github.com/yizhiw2");
+			if(addSuccess == true)
+			Toast.makeText(MainResumePlus.this, 
+					"已添加到联系人",
+					1000)
+					.show();
+			break;
+		default:
+			break;
+		}
+	}
+
+	//保存到联系人
+	private void addContact(Context context, String name,
+			String qq, String phone, String email, String website)
+	{
+		ArrayList<ContentProviderOperation> ops = 
+				new ArrayList<ContentProviderOperation>();
+
+		//在名片表插入一个新名片
+		ops.add(ContentProviderOperation.newInsert(
+				ContactsContract.RawContacts.CONTENT_URI)
+		.withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+		//.withValue(ContactsContract.RawContacts._ID, 0) //
+		.withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+		.withValue(ContactsContract.RawContacts.AGGREGATION_MODE,
+				ContactsContract.RawContacts.AGGREGATION_MODE_DISABLED)
+				.build());
+		Log.i("--add-new--","ok!!!!");
+		// add name
+		//添加一条新名字记录；对应RAW_CONTACT_ID为0的名片
+		if (!name.equals("")) {
+			ops.add(ContentProviderOperation.
+					newInsert(ContactsContract.Data.CONTENT_URI)
+					.withValueBackReference(ContactsContract
+							.Data.RAW_CONTACT_ID, 0)
+					.withValue(ContactsContract.Data.MIMETYPE,
+							ContactsContract.CommonDataKinds
+							.StructuredName.CONTENT_ITEM_TYPE)
+							.withValue(ContactsContract.CommonDataKinds
+									.StructuredName.DISPLAY_NAME,name)
+									.build());
+		
+		}
+		Log.i("--add-name--","ok!!!!");
+		// add phone
+		if (!phone.equals("")) {
+		ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+		.withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+		.withValue(ContactsContract.Data.MIMETYPE,
+		ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE).withValue(ContactsContract.CommonDataKinds.Phone.NUMBER,phone).withValue(ContactsContract.CommonDataKinds.Phone.TYPE,1).build());
+		}
+		Log.i("--add-phone--","ok!!!!");
+		// add email
+		if (!email.equals("")) {
+		ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+		.withValueBackReference(
+		ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
+		ContactsContract.Data.MIMETYPE,ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE).withValue(ContactsContract.CommonDataKinds.Email.DATA,email).withValue(ContactsContract.CommonDataKinds.Email.TYPE,1).build());
+		}
+		Log.i("--add-email-","ok!!!!");
+		// add website
+		if (!website.equals("")) {
+		ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+		.withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+		.withValue(ContactsContract.Data.MIMETYPE,
+		ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE).withValue(
+		ContactsContract.CommonDataKinds.Website.URL,website)
+		.withValue(
+		ContactsContract.CommonDataKinds.Website.TYPE,
+		ContactsContract.CommonDataKinds.Website.TYPE_WORK).build());
+		}
+		Log.i("--add-website--","ok!!!!");
+		
+		// add qq
+		
+		ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).withValueBackReference(
+		ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
+		ContactsContract.Data.MIMETYPE,
+		ContactsContract.CommonDataKinds.Im.CONTENT_ITEM_TYPE).withValue(
+		ContactsContract.CommonDataKinds.Im.DATA1,qq)
+		.withValue(
+		ContactsContract.CommonDataKinds.Im.PROTOCOL,
+		ContactsContract.CommonDataKinds.Im.PROTOCOL_QQ).build());
+		
+		try {
+			context.getContentResolver().applyBatch(
+			ContactsContract.AUTHORITY, ops);
+			addSuccess = true;
+			} catch (Exception e){
+				Log.i("---saveto---","添加失败");
+		}
+	}
+
+
+	
 }
+

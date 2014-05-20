@@ -18,6 +18,16 @@
 	<string name="school02_during">2011.09&#8211;2015.06</string>
 	<string name="developer">android客户端开发实习生</string>
 	<string name="faceImage_desc">我的照片</string>
-	<string name="note">摄于2011年（大一）</string>
+	<string name="note">摄于2011年珞珈山</string>
+	<string name="call">电话</string>
+	<string name="message">短信</string>
+	<string name="email">邮件</string>
+	<string name="thanks">感谢您阅读完！</string>
+	<string name="name">王轶</string>
+	<string name="phone_number">13163286397</string>
+	<string name="email_address">yizhiw2@gmail.com</string>
+	<string name="email.subject">关于实习</string>
+	<string name="saveto">一键添加到联系人</string>
+	<string name="qq_number">906590244</string>
 	
 </resources>

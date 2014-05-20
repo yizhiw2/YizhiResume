@@ -18,7 +18,10 @@ public class Fragment05 extends Fragment {
 	@Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 		   Bundle savedInstanceState) {
-	       View rootView = inflater.inflate(R.layout.fragment01, container, false);
+	       View rootView = inflater.inflate(
+	    		   R.layout.fragment01, 
+	    		   container, 
+	    		   false);
 	       int i = getArguments().getInt(NUMBER);
 	       String title = getResources().getStringArray(R.array.mTitles)[i];
 	       getActivity().setTitle(title);

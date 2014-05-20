@@ -7,5 +7,12 @@
         <item>编程技能</item>
         <item>个人项目</item>
         <item>读过的书</item>
+        <item>联系我</item>
+    </string-array>
+    
+    <string-array name = "btns">
+        <item>电话</item>
+        <item>短信</item>
+        <item>邮件</item>
     </string-array>
 </resources>

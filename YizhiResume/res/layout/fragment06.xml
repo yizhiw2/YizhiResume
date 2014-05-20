@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+    
+    <!-- 此处id设置有要求 -->
+    <!-- 
+    
+    <ListView 
+        android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:entries="@array/btns"
+        android:drawSelectorOnTop="false"
+       	/>
+    <TextView
+        android:id="@id/android:empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="No data" /> 
+        -->
+    
+   	<TextView 
+        android:id="@+id/text_thanks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/thanks"
+        android:textSize="30sp"
+        />
+   	<Button 
+            android:id="@+id/call"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call"
+			android:gravity="center"
+			android:background="#fcaf17"
+            android:textSize="@dimen/content_text_size" 
+            android:layout_above="@+id/message"
+           	/>
+    <Button 
+            android:id="@+id/message"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/message"
+           	android:gravity="center"
+           	android:background="#dea32c"
+            android:textSize="@dimen/content_text_size"
+            android:layout_above="@+id/email"
+            />
+     <Button 
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/email"
+            android:gravity="center"
+            android:background="#d1923f"
+            android:textSize="@dimen/content_text_size"
+            android:layout_above="@+id/saveto"
+            /> 
+    	
+     <Button 
+            android:id="@+id/saveto"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/saveto"
+			android:gravity="center"
+			android:background="#fcaf17"
+            android:textSize="@dimen/content_text_size" 
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="16dp"
+           	/>
+      
+    	
+   
+
+</RelativeLayout>
