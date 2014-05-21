@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   	style="@style/FragmentPading"
+    android:id="@+id/gridlayout_01"
+    android:columnCount="2"
+    android:rowCount="2"
    	>
     
-    <TextView 
+    <!-- <TextView 
         android:id="@+id/fragment01_text01"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/developer"
        	style="@style/ContantTextStyle"
+        /> -->
+    <!-- <TextView 
+        android:id="@+id/text_android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_android"
+        android:gravity="center"
+        android:background="@drawable/text_android_shape"
         />
-    
+     <TextView 
+        android:id="@+id/text_client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_client"
+        android:gravity="center"
+        android:background="@drawable/text_android_shape"
+        />
+      <TextView 
+        android:id="@+id/text_develop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_develop"
+        android:gravity="center"
+        android:background="@drawable/text_android_shape"
+        />
+       <TextView 
+        android:id="@+id/text_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_student"
+        android:gravity="center"
+        android:background="@drawable/text_android_shape"
+        /> -->
 
-</RelativeLayout>
+</GridLayout>

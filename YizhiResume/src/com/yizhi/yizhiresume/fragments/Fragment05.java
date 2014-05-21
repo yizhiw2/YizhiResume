@@ -1,5 +1,6 @@
 package com.yizhi.yizhiresume.fragments;
 
+
 import com.yizhi.yizhiresume.R;
 
 import android.annotation.SuppressLint;
@@ -13,19 +14,19 @@ import android.view.ViewGroup;
 public class Fragment05 extends Fragment {
    @SuppressLint("NewApi")
    public static final String NUMBER = "number";
-	    
+   
+   
     @SuppressLint("NewApi")
 	@Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 		   Bundle savedInstanceState) {
 	       View rootView = inflater.inflate(
-	    		   R.layout.fragment01, 
+	    		   R.layout.fragment05, 
 	    		   container, 
 	    		   false);
 	       int i = getArguments().getInt(NUMBER);
 	       String title = getResources().getStringArray(R.array.mTitles)[i];
 	       getActivity().setTitle(title);
-	       
 	       
 	       return rootView;
     }

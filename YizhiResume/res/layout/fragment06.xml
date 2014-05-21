@@ -30,23 +30,21 @@
         />
    	<Button 
             android:id="@+id/call"
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/call"
 			android:gravity="center"
-			android:background="#fcaf17"
+			android:background="@drawable/selector0"
             android:textSize="@dimen/content_text_size" 
             android:layout_above="@+id/message"
            	/>
     <Button 
             android:id="@+id/message"
-            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/message"
            	android:gravity="center"
-           	android:background="#dea32c"
+           	android:background="@drawable/selector1"
             android:textSize="@dimen/content_text_size"
             android:layout_above="@+id/email"
             />
@@ -54,25 +52,22 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="@string/email"
             android:gravity="center"
-            android:background="#d1923f"
+            android:background="@drawable/selector2"
             android:textSize="@dimen/content_text_size"
             android:layout_above="@+id/saveto"
             /> 
     	
      <Button 
             android:id="@+id/saveto"
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/saveto"
 			android:gravity="center"
-			android:background="#fcaf17"
+			android:background="@drawable/selector3"
             android:textSize="@dimen/content_text_size" 
             android:layout_alignParentBottom="true"
-            android:paddingBottom="16dp"
            	/>
       
     	

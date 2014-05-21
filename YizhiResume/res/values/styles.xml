@@ -36,6 +36,11 @@
 	    <item name = "android:paddingLeft">32dp</item>
 	    <item name = "android:paddingRight">32dp</item>    
 	</style>
-	 
+	<style name = "TextPading">
+	    <item name = "android:paddingTop">5dp</item>
+	    <item name = "android:paddingBottom">5dp</item>
+	    <item name = "android:paddingLeft">5dp</item>
+	    <item name = "android:paddingRight">5dp</item>    
+	</style>
     
 </resources>

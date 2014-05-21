@@ -22,7 +22,7 @@ public class Fragment06 extends Fragment
 {
 	@SuppressLint("NewApi")
 	public static final String NUMBER = "number";
-	Callbacks callbacks;
+	Callback06 callback06;
 	private Button call;
 	private Button message;
 	private Button email;
@@ -32,7 +32,7 @@ public class Fragment06 extends Fragment
     public void onAttach(Activity activity) {
     	super.onAttach(activity);
 	    	try {
-	            callbacks = (Callbacks) activity;
+	            callback06 = (Callback06) activity;
 	        } catch (ClassCastException e) {
 	            	throw new ClassCastException(activity.toString() + 
 	            		" must implements OnArticleSelectedListener");
@@ -40,7 +40,7 @@ public class Fragment06 extends Fragment
 	    }
     
 	//实现与activity通信的借口
-	public interface Callbacks {
+	public interface Callback06 {
 	      	public void onButtonClick(View v);
 	}
 	
@@ -94,7 +94,7 @@ public class Fragment06 extends Fragment
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			callbacks.onButtonClick(v);
+			callback06.onButtonClick(v);
 		}
 		
 	}
