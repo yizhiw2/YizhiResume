@@ -33,4 +33,13 @@
 	<string name="saveto">一键添加到联系人</string>
 	<string name="qq_number">906590244</string>
 	
+	<string name="book01">Head first java</string>
+	<string name="book02">Java编程思想</string>
+	<string name="book03">Java核心技术</string>
+	<string name="book04">Java开发实战\n1200例</string>
+	<string name="book05">疯狂android\n讲义</string>
+	<string name="book06">Android\n开发入门与实战</string>
+	<string name="book07">Head first \n设计模式</string>
+	<string name="book08">大话设计模式</string>
+	<string name="book09">等</string>
 </resources>

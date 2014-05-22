@@ -4,4 +4,5 @@
     <color name = "background_03">#aaaaaa</color>
     <color name = "color_text_01">#aa0000</color>
     <color name = "color_text_black">#130c0e</color>
+    <color name = "color_text_grey">#d0d0d0</color>
 </resources>
