@@ -1,5 +1,10 @@
 package com.yizhi.yizhiresume.fragments;
 
+
+/*
+ * 教育经历
+ * 
+ * */
 import com.yizhi.yizhiresume.R;
 
 import android.annotation.SuppressLint;

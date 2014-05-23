@@ -5,5 +5,6 @@
     android:id="@+id/gridlayout_05"
     android:columnCount="3"
     android:rowCount="3"
+    android:background="@drawable/background05"
     >
 </GridLayout>

@@ -1,27 +1,31 @@
 package com.yizhi.yizhiresume.fragments;
 
-import com.yizhi.yizhiresume.R;
+/*
+ * 联系我
+ * 
+ * 在fragment设置接口，
+ * 让activity去继承，
+ * 然后实现操作方法
+ * 
+ * */
 
-import android.R.integer;
+import com.yizhi.yizhiresume.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 
 @SuppressLint("NewApi")
 public class Fragment06 extends Fragment 
 {
 	@SuppressLint("NewApi")
 	public static final String NUMBER = "number";
+	//
 	Callback06 callback06;
 	private Button call;
 	private Button message;
@@ -44,23 +48,6 @@ public class Fragment06 extends Fragment
 	      	public void onButtonClick(View v);
 	}
 	
-	/*@Override
-	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		
-	       
-	       
-	       buttons = getActivity()
-	    		   .getResources().getStringArray(R.array.btns);
-//	       listView = (ListView)rootView.findViewById(R.id.);
-	       this.setListAdapter(new ArrayAdapter<String>(
-	    		   getActivity(),
-	    		   android.R.layout.simple_list_item_1,
-	    		   buttons));
-		
-	}*/
-	
 	@SuppressLint("NewApi")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +60,7 @@ public class Fragment06 extends Fragment
 	       String title = getResources().getStringArray(R.array.mTitles)[i];
 	       getActivity().setTitle(title);
 	       
+	       //四个按钮
 	       call = (Button)rootView.findViewById(R.id.call);
 	       message = (Button)rootView.findViewById(R.id.message);
 	       email = (Button)rootView.findViewById(R.id.email);
@@ -88,6 +76,7 @@ public class Fragment06 extends Fragment
 	       return rootView;
     }
 	
+	//监听各个按钮
 	class OnMyClickListener implements OnClickListener
 	{
 
@@ -98,18 +87,4 @@ public class Fragment06 extends Fragment
 		}
 		
 	}
-/*  
-	public void onDetach()
-	{
-		super.onDetach();
-		callbacks = null;
-	}
-	*/
-	/*public void onListItemClick(ListView listView,
-			View view, int position, long id)
-	{
-		super.onListItemClick(listView, view, position, id);
-		//callbacks.onItemSelected(position);
-	}*/
-	 
 }

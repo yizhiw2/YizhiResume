@@ -1,5 +1,12 @@
 package com.yizhi.yizhiresume.fragments;
 
+
+/*
+ * 个人信息
+ *
+ * 
+ * 
+ */
 import com.yizhi.yizhiresume.R;
 
 import android.annotation.SuppressLint;

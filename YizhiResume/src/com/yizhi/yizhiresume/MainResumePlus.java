@@ -1,5 +1,10 @@
 package com.yizhi.yizhiresume;
 
+/*
+ * 实现抽屉的activity
+ * 
+ * */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,24 +18,16 @@ import com.yizhi.yizhiresume.fragments.Fragment04;
 import com.yizhi.yizhiresume.fragments.Fragment05;
 import com.yizhi.yizhiresume.fragments.Fragment06;
 
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.content.ContentProviderOperation;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.CommonDataKinds.Email;
-import android.provider.ContactsContract.CommonDataKinds.StructuredName;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -52,14 +49,10 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 	private CharSequence mDrawerTitle;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
-	// private NavDrawerListAdapter mAdapter;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private String[] mTitles;
-
-	/*
-	 * private String[] titles = new String[]
-	 * {"个人信息","求职意向","教育经历","编程技能","个人项目","读过的书"};
-	 */
+	
+	//每一栏的图标
 	private int[] imageIds = new int[] { R.drawable.user_2,
 			R.drawable.target_2, R.drawable.office_2, R.drawable.android_2,
 			R.drawable.lab_2, R.drawable.book_2, R.drawable.mobile_2,
@@ -72,20 +65,22 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 
 		// 初始化抽屉
 		findView();
-
+		
+		//进去就直接显示第0个
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
 	}
 
+	//初始化抽屉方法
 	@SuppressLint("NewApi")
 	private void findView() {
 
-		// TODO Auto-generated method stub
 		mTitle = mDrawerTitle = getTitle();
 		mTitles = getResources().getStringArray(R.array.mTitles);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+		
 		// set a custom shadow that overlays the main content when the drawer
 		// opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
@@ -114,21 +109,20 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 		R.string.drawer_open, /* "open drawer" description for accessibility */
 		R.string.drawer_close /* "close drawer" description for accessibility */
 		) {
+			//关闭方法
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				invalidateOptionsMenu(); 
 			}
-
+			//打开方法
 			public void onDrawerOpened(View drawerView) {
 				getActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				invalidateOptionsMenu();
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		// enable ActionBar app icon to behave as action to toggle nav drawer
+		// 显示图标
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 	}
@@ -149,8 +143,6 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		// getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
@@ -171,23 +163,6 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		/*
-		 * // Handle action buttons switch(item.getItemId()) {
-		 * 
-		 * case R.id.action_search:
-		 * 
-		 * Toast.makeText(this, R.string.action_search,
-		 * Toast.LENGTH_SHORT).show();
-		 * 
-		 * return true; case R.id.action_refresh:
-		 * 
-		 * Toast.makeText(this, R.string.action_refresh,
-		 * Toast.LENGTH_SHORT).show();
-		 * 
-		 * return true; default: return super.onOptionsItemSelected(item);
-		 * 
-		 * }
-		 */
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -197,46 +172,45 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 	}
 
 	private void selectItem(int position) {
-		// TODO Auto-generated method stub
 		Fragment fragment = null;
 		Bundle args = new Bundle();
 
 		switch (position) {
 		case 0:
 			fragment = new Fragment00();
-			args.putInt(Fragment00.NUMBER, position);
+//			args.putInt(Fragment00.NUMBER, position);
 			break;
 
 		case 1:
 			fragment = new Fragment01();
-			args.putInt(Fragment01.NUMBER, position);
+//			args.putInt(Fragment01.NUMBER, position);
 			break;
 
 		case 2:
 			fragment = new Fragment02();
-			args.putInt(Fragment02.NUMBER, position);
+//			args.putInt(Fragment02.NUMBER, position);
 			break;
 		case 3:
 			fragment = new Fragment03();
-			args.putInt(Fragment03.NUMBER, position);
+//			args.putInt(Fragment03.NUMBER, position);
 			break;
 		case 4:
 			fragment = new Fragment04();
-			args.putInt(Fragment04.NUMBER, position);
+//			args.putInt(Fragment04.NUMBER, position);
 			break;
 		case 5:
 			fragment = new Fragment05();
-			args.putInt(Fragment05.NUMBER, position);
+//			args.putInt(Fragment05.NUMBER, position);
 			break;
 		case 6:
 			fragment = new Fragment06();
-			args.putInt(Fragment06.NUMBER, position);
+//			args.putInt(Fragment06.NUMBER, position);
 			break;
 
 		default:
 			break;
 		}
-
+		args.putInt(Fragment00.NUMBER, position);
 		fragment.setArguments(args);
 
 		// Insert the fragment by replacing any existing fragment
@@ -258,6 +232,7 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 		getActionBar().setTitle(mTitle);
 	}
 
+	//实现“联系我”的按钮监听方法
 	@Override
 	public void onButtonClick(View v) {
 		// TODO Auto-generated method stub
@@ -269,22 +244,26 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 
 		Intent intent = null;
 		switch (v.getId()) {
+		//打电话
 		case R.id.call:
 			intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
 					+ phone_number));
 			startActivity(intent);
 			break;
+			//发短信
 		case R.id.message:
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("smsto:"
 					+ phone_number));
 			startActivity(intent);
 			break;
+			//发邮件
 		case R.id.email:
 			intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",
 					email_address, null));
 			intent.putExtra(Intent.EXTRA_SUBJECT, email_subject);
 			startActivity(intent);
 			break;
+			//保存联系人
 		case R.id.saveto:
 			addContact(MainResumePlus.this, name, qq_number, phone_number,
 					email_address, "github.com/yizhiw2");
@@ -305,7 +284,6 @@ public class MainResumePlus extends Activity implements OnItemClickListener,
 		ops.add(ContentProviderOperation
 				.newInsert(ContactsContract.RawContacts.CONTENT_URI)
 				.withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
-				// .withValue(ContactsContract.RawContacts._ID, 0) //
 				.withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
 				.withValue(ContactsContract.RawContacts.AGGREGATION_MODE,
 						ContactsContract.RawContacts.AGGREGATION_MODE_DISABLED)

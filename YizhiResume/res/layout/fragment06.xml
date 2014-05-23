@@ -4,29 +4,14 @@
     android:layout_height="match_parent" 
     android:orientation="vertical">
     
-    <!-- 此处id设置有要求 -->
-    <!-- 
-    
-    <ListView 
-        android:id="@id/android:list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:entries="@array/btns"
-        android:drawSelectorOnTop="false"
-       	/>
-    <TextView
-        android:id="@id/android:empty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="No data" /> 
-        -->
-    
    	<TextView 
         android:id="@+id/text_thanks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="32dp"
         android:text="@string/thanks"
-        android:textSize="30sp"
+        android:textSize="24sp"
         />
    	<Button 
             android:id="@+id/call"

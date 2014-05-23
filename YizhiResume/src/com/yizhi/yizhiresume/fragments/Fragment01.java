@@ -1,28 +1,30 @@
 package com.yizhi.yizhiresume.fragments;
 
+/*
+ *求职意向
+ * 
+ */
 import com.yizhi.yizhiresume.R;
 
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-@SuppressLint("NewApi")
+@SuppressLint({ "NewApi", "ShowToast" })
 public class Fragment01 extends Fragment {
 	@SuppressLint("NewApi")
 	public static final String NUMBER = "number";
@@ -50,45 +52,36 @@ public class Fragment01 extends Fragment {
 
 		};
 
-		int[] anims = new int[] { R.anim.anim_text_android, R.anim.anim_text_client, R.anim.anim_text_develop,
+		int[] anims = new int[] { R.anim.anim_text_android,
+				R.anim.anim_text_client, R.anim.anim_text_develop,
 				R.anim.anim_text_student };
 
+		String[] toasts = new String[]
+				{
+					"点我没用","我也是","楼下能点","楼上骗你的"
+				};
 		View rootView = inflater.inflate(R.layout.fragment01, container, false);
 		int i = getArguments().getInt(NUMBER);
 		String title = getResources().getStringArray(R.array.mTitles)[i];
 		getActivity().setTitle(title);
 
-		/*
-		 * 这种方法只能得到整个屏幕的高与宽
-		 * 
-		 * // 获取屏幕的高宽及得到relativelayout的高宽 Display display =
-		 * getActivity().getWindowManager().getDefaultDisplay();
-		 * 
-		 * @SuppressWarnings("deprecation") final int width = display.getWidth()
-		 * / 2;
-		 * 
-		 * @SuppressWarnings("deprecation") final int height =
-		 * display.getHeight() / 2;
-		 */
-
-		// 获取container的高度 
+		// 获取container的高度
 		final int width = container.getWidth() / 2;
 		final int height = container.getHeight() / 2;
-		
-		Log.i("--width--", ""+width);
-		Log.i("--height--",""+height);
+
+		Log.i("--width--", "" + width);
+		Log.i("--height--", "" + height);
 
 		Log.i("--grid--", "for front");
 		gridLayout = (GridLayout) rootView.findViewById(R.id.gridlayout_01);
 
 		for (int j = 0; j < strings.length; j++) {
-			
+
 			RelativeLayout relativeLayout = new RelativeLayout(getActivity());
 
-			
 			/*
-			 * 此方法在此处无效，还不知为什么
-			 * // 设置layout的高度和宽度，先获取再修改再设置 RelativeLayout.LayoutParams params =
+			 * 此方法在此处无效，还不知为什么 // 设置layout的高度和宽度，先获取再修改再设置
+			 * RelativeLayout.LayoutParams params =
 			 * (RelativeLayout.LayoutParams)relativeLayout .getLayoutParams();
 			 * params.height = height; params.width = width;
 			 * relativeLayout.setLayoutParams(params);
@@ -102,16 +95,27 @@ public class Fragment01 extends Fragment {
 			text.setText(strings[j]);
 			text.setTextSize(30);
 			text.setGravity(Gravity.CENTER);
-//			text.setWidth();
-			Log.i("text_width", ""+text.getWidth());
-			Log.i("text_height", ""+text.getHeight());
+			// text.setWidth();
+			Log.i("text_width", "" + text.getWidth());
+			Log.i("text_height", "" + text.getHeight());
 			text.setBackground(backgrounds[j]);
+			final String tmp = toasts[j];
 			
+			//点击效果
+			text.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					
+					Toast.makeText(getActivity(), tmp, 200).show();
+				}
+			});
 			Animation startAnimation = AnimationUtils.loadAnimation(
 					getActivity(), anims[j]);
 			LinearInterpolator line = new LinearInterpolator();
 			startAnimation.setInterpolator(line);
-			
+
 			if (startAnimation != null) {
 				text.setAnimation(startAnimation);
 				text.startAnimation(startAnimation);

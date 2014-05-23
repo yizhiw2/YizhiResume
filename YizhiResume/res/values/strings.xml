@@ -8,7 +8,6 @@
     <string name="myHabit">爱好：乒乓球，阅读</string>
     <string name="myNature">性格：外向，开朗</string>
     <string name="desc">desc</string>
-    <string name="myHint">查看详细请点击</string>
 	<string name="drawer_open">open</string>
 	<string name="drawer_close">close</string>
 	<string name="school01">四川省绵竹中学</string>
@@ -25,7 +24,7 @@
 	<string name="call">电话</string>
 	<string name="message">短信</string>
 	<string name="email">邮件</string>
-	<string name="thanks">感谢您阅读完！</string>
+	<string name="thanks"></string>
 	<string name="name">王轶-找实习的小生</string>
 	<string name="phone_number">13163286397</string>
 	<string name="email_address">yizhiw2@gmail.com</string>

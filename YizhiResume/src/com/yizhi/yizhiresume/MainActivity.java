@@ -1,5 +1,10 @@
 package com.yizhi.yizhiresume;
 
+/*
+ * 程序启动活动播放动画
+ * 
+ * 
+ * */
 import android.app.Activity;
 import android.content.Intent;
 
@@ -21,15 +26,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		/*
-		// 隐藏标题栏  
-        requestWindowFeature(Window.FEATURE_NO_TITLE);  
-        // 隐藏状态栏  
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,  
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); 
-        */
         setContentView(R.layout.activity_main);
-		
 		
 		photo = (ImageView)findViewById(R.id.myPhoto);
 		
@@ -41,33 +38,31 @@ public class MainActivity extends Activity {
 		
 		if(startAnimation != null)
 		{
+			//设置并开始
 			photo.setAnimation(startAnimation);
+			photo.startAnimation(startAnimation);
 		}
 		
 		startAnimation.setAnimationListener(new AnimationListener() {
-			
+			//动画开始时
 			public void onAnimationStart(Animation animation) {
 				// TODO Auto-generated method stub
 				
 			}
-			
+			//动画重复时
 			public void onAnimationRepeat(Animation animation) {
 				// TODO Auto-generated method stub
 				
 			}
-			
+			//动画结束时
 			public void onAnimationEnd(Animation animation) {
 				
 				photo.clearAnimation();
-				//启动新活动
+				//启动新活动并结束当前活动
 				Intent intent = new Intent(MainActivity.this, MainResumePlus.class);
 				startActivity(intent);
 				finish();
 			}
 		});
-		
-		
 	}
-	
-	
 }
